@@ -25,7 +25,7 @@ Configuration
 -------------
 
 
-<i class="icon-cog"></i>To configure Yours tile You have to change this variables in tiles.scss
+<i class="icon-cog"></i>To configure Yours tiles You have to change this variables in tiles.scss
 
 This variables changing colors of backgrounds, in example this is some blue color.
 Remember about 4th argument of 'rgba' this is opacity of this color 
