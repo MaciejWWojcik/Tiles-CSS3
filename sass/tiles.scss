@@ -1,0 +1,146 @@
+$activeBackgroundColor : rgba(1,76,140,0.5);
+$inactiveBackgroundColor : rgba(1,76,140,0.35);
+$descriptionBackgroundColor: rgba(190,210,230,0.5);
+
+$blurRadius : 15px;
+
+$tileWidth: calc(100% / 3); // "3" is the number of tiles per row
+$tileHeight: calc(100vh / 3); // some example of height
+$negativeTileHeight: calc(100vh / 3 * -1); // the same as $tileHeight but multiple by "-1"
+$descriptionWidth : 300px ;
+$descriptionHeight : 70% ;
+
+$buttonAnimationTime : 1s;
+$blurAnimationtime : 0.5s;
+$backgroundAnimationtime : 0.5s;
+
+.tilesContainer {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+}
+
+.tile{
+  height: $tileHeight;
+  width: $tileWidth;
+  margin: 0;
+  padding: 0;
+
+  .description{
+    height: $tileHeight;
+    width: $tileWidth;
+    z-index: 120;
+    position: absolute;
+    text-align: center;
+
+    &:hover{
+      background:  linear-gradient(to bottom, $descriptionBackgroundColor 0%, $descriptionBackgroundColor 100%) no-repeat;
+      background-size: $descriptionWidth $descriptionHeight;
+      background-position: center;
+
+      button{
+        display: block;
+        animation-name: showButton;
+        animation-duration: $buttonAnimationTime;
+        animation-iteration-count: 1;
+        opacity: 1;
+      }
+
+      + .blur{
+        opacity:1;
+        display: block;
+        background-color: $activeBackgroundColor;
+        animation-name: makeBackgroundActive;
+        animation-duration: $backgroundAnimationtime;
+        animation-iteration-count: 1;
+
+        + img{
+          animation-name: showBlur;
+          animation-duration: $blurAnimationtime;
+          animation-iteration-count: 1;
+
+          filter: blur($blurRadius);
+          -webkit-filter: blur($blurRadius);
+          z-index: 101;
+        }
+      }
+    }
+
+    h3{
+      margin-top: calc(70vh / 8);
+      margin-bottom: 30px;
+      font-weight: bold;
+      color:white;
+    }
+
+    button{
+      margin:0 auto;
+      animation-name: hideButton;
+      animation-duration: $buttonAnimationTime;
+      animation-iteration-count: 1;
+      opacity: 0;
+    }
+  }
+
+  .blur{
+    height: $tileHeight;
+    width: 100%;
+    position: relative;
+    z-index: 110;
+    background-color: $inactiveBackgroundColor;
+    animation-name: makeBackgroundInActiv;
+    animation-duration: $backgroundAnimationtime;
+    animation-iteration-count: 1;
+  }
+
+  img{
+    margin: 0;
+    padding:0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: $negativeTileHeight;
+    z-index: 100;
+
+    animation-name: hideBlur;
+    animation-duration: $blurAnimationtime;
+    animation-iteration-count: 1;
+  }
+}
+
+@keyframes hideButton {
+  from {opacity:1;}
+  to {opacity:0;}
+}
+@keyframes showButton {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+@keyframes makeBackgroundActive {
+  from {background-color: $activeBackgroundColor;}
+  to {background-color: $inactiveBackgroundColor;}
+}
+@keyframes makeBackgroundInActive {
+  from {background-color: $inactiveBackgroundColor;}
+  to {background-color: $activeBackgroundColor;}
+}
+@keyframes hideBlur {
+  from {filter: blur($blurRadius);
+    -webkit-filter: blur($blurRadius);}
+  to {filter: blur(0);
+    -webkit-filter: blur(0);}
+}
+@keyframes showBlur {
+  from {filter: blur(0);
+    -webkit-filter: blur(0);}
+  to {filter: blur($blurRadius);
+    -webkit-filter: blur($blurRadius);}
+}

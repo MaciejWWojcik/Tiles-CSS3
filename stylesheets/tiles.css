@@ -1,0 +1,154 @@
+/* line 17, ../sass/tiles.scss */
+.tilesContainer {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+}
+
+/* line 31, ../sass/tiles.scss */
+.tile {
+  height: calc(100vh / 3);
+  width: calc(100% / 3);
+  margin: 0;
+  padding: 0;
+}
+/* line 37, ../sass/tiles.scss */
+.tile .description {
+  height: calc(100vh / 3);
+  width: calc(100% / 3);
+  z-index: 120;
+  position: absolute;
+  text-align: center;
+}
+/* line 44, ../sass/tiles.scss */
+.tile .description:hover {
+  background: linear-gradient(to bottom, rgba(190, 210, 230, 0.5) 0%, rgba(190, 210, 230, 0.5) 100%) no-repeat;
+  background-size: 300px 70%;
+  background-position: center;
+}
+/* line 49, ../sass/tiles.scss */
+.tile .description:hover button {
+  display: block;
+  animation-name: showButton;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  opacity: 1;
+}
+/* line 57, ../sass/tiles.scss */
+.tile .description:hover + .blur {
+  opacity: 1;
+  display: block;
+  background-color: rgba(1, 76, 140, 0.5);
+  animation-name: makeBackgroundActive;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+/* line 65, ../sass/tiles.scss */
+.tile .description:hover + .blur + img {
+  animation-name: showBlur;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  filter: blur(15px);
+  -webkit-filter: blur(15px);
+  z-index: 101;
+}
+/* line 77, ../sass/tiles.scss */
+.tile .description h3 {
+  margin-top: calc(70vh / 8);
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: white;
+}
+/* line 84, ../sass/tiles.scss */
+.tile .description button {
+  margin: 0 auto;
+  animation-name: hideButton;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  opacity: 0;
+}
+/* line 93, ../sass/tiles.scss */
+.tile .blur {
+  height: calc(100vh / 3);
+  width: 100%;
+  position: relative;
+  z-index: 110;
+  background-color: rgba(1, 76, 140, 0.35);
+  animation-name: makeBackgroundInActiv;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+/* line 104, ../sass/tiles.scss */
+.tile img {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  top: calc(100vh / 3 * -1);
+  z-index: 100;
+  animation-name: hideBlur;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes hideButton {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes showButton {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes makeBackgroundActive {
+  from {
+    background-color: rgba(1, 76, 140, 0.5);
+  }
+  to {
+    background-color: rgba(1, 76, 140, 0.35);
+  }
+}
+@keyframes makeBackgroundInActive {
+  from {
+    background-color: rgba(1, 76, 140, 0.35);
+  }
+  to {
+    background-color: rgba(1, 76, 140, 0.5);
+  }
+}
+@keyframes hideBlur {
+  from {
+    filter: blur(15px);
+    -webkit-filter: blur(15px);
+  }
+  to {
+    filter: blur(0);
+    -webkit-filter: blur(0);
+  }
+}
+@keyframes showBlur {
+  from {
+    filter: blur(0);
+    -webkit-filter: blur(0);
+  }
+  to {
+    filter: blur(15px);
+    -webkit-filter: blur(15px);
+  }
+}
