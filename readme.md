@@ -52,3 +52,8 @@ Another variables You can change are writen below.
     $buttonAnimationTime : 1s;
     $blurAnimationtime : 0.5s;
     $backgroundAnimationtime : 0.5s;
+    
+
+contact: maciejwwojcik@gmail.com
+    
+    
